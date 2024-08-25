@@ -64,29 +64,16 @@
   </p>
 </section>
 <section>
-  <h2 id="masters">Наши мастера</h2>
-  <p>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sint soluta
-    voluptatum repellendus magni, quasi aliquid laborum pariatur repellat facere
-    magnam voluptate tempore impedit. Amet, doloremque molestias. Nulla quo
-    repudiandae nobis et minima vel doloremque id qui recusandae optio in odit
-    iste similique nam deleniti dolor quidem explicabo voluptatem ab aliquam
-    obcaecati saepe, sit possimus at. Fuga, consequuntur iure a commodi quia,
-    quod omnis explicabo delectus corrupti fugit minima itaque eveniet quae
-    accusamus eum vitae nisi doloribus excepturi corporis voluptatem cum velit.
-    Optio fugit quidem voluptatem necessitatibus vel! Incidunt reprehenderit
-    reiciendis rerum tempora distinctio doloremque ipsum dicta quisquam deleniti
-    voluptatem laboriosam optio saepe, perferendis ut! Rerum ex amet culpa.
-    Beatae, vero enim animi eveniet ut porro cumque nostrum, suscipit veritatis
-    tempore architecto possimus cum, esse sint ex excepturi soluta minus ducimus
-    exercitationem? Voluptatibus, earum, sed nisi aliquid rem in expedita quidem
-    sunt esse deleniti consequuntur optio dicta voluptatum, quibusdam placeat
-    repudiandae accusantium explicabo veniam recusandae atque. Magnam corrupti
-    eius minima eos cumque voluptas soluta iste, voluptate perferendis hic,
-    maxime fugiat, numquam alias laboriosam. Repellat sunt quae ut modi,
-    dolorem, velit aut doloribus omnis a pariatur autem. At doloremque cumque
-    eos modi, unde sed reiciendis, quae recusandae nam in, hic ullam quia?
-  </p>
+    <h2 id="masters">Наши мастера</h2>  
+    <div class="masters">
+    {% for master in masters %}
+        <div class="master">
+            <img src='{{ master.photo }}'> 
+            <p>{{ master.last_name }} {{ master.first_name }}</p>
+        </div>          
+    {% endfor %}
+    </div>  
+        
 </section>
 <section>
   <h2 id="services">Услуги</h2>

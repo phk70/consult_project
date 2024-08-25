@@ -21,7 +21,7 @@ class Master(models.Model):
     photo = models.ImageField(
         blank=True,
         null=True,
-        upload_to="media/masters/photos/",
+        upload_to="masters/photos/",
         verbose_name="Фото мастера",
     )
     services = models.ManyToManyField(Service, related_name="masters")

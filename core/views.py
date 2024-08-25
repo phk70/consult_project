@@ -1,8 +1,11 @@
 from django.shortcuts import render
 
+from core.models import Master
+
 
 def main_page(request):
-    return render(request, "main.html")
+    masters = Master.objects.all()
+    return render(request, "main.html", {'masters': masters})
 
 
 def thanks_you_page(request):

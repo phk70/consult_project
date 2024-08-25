@@ -1,4 +1,19 @@
 html {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 50px;
+  margin-right: 80px;
+  scroll-behavior: smooth;
+}
+
+.master img {
+  width: 200px;
+  border-radius: 50%;
+}
+
+.master p {
+  text-align: center;
+  width: 200px;
+}
+
+.masters {
+  display: inline-block;
 }
