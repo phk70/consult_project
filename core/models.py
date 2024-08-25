@@ -33,3 +33,23 @@ class Service(models.Model):
     class Meta:
         verbose_name = "Услуга"
         verbose_name_plural = "Услуги"
+
+
+class Client(models.Model):
+    name = models.CharField(max_length=200, verbose_name="Имя клиента")
+    phone = models.DecimalField(
+        max_digits=10, decimal_places=2, verbose_name="Телефон клиента"
+    )
+    master = models.ForeignKey(
+        Master, related_name="first_name", on_delete=models.CASCADE
+    )
+    service = models.ForeignKey(
+        Service, related_name="services", on_delete=models.CASCADE
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Клиент"
+        verbose_name_plural = "Клиенты"
