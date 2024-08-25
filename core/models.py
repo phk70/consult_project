@@ -19,7 +19,10 @@ class Master(models.Model):
     last_name = models.CharField(max_length=40, verbose_name="Фамилия мастера")
     contact_info = models.TextField(max_length=30, verbose_name="Контактная информация")
     photo = models.ImageField(
-        blank=True, null=True, upload_to="masters/photos/", verbose_name="Фото мастера"
+        blank=True,
+        null=True,
+        upload_to="media/masters/photos/",
+        verbose_name="Фото мастера",
     )
     services = models.ManyToManyField(Service, related_name="masters")
 

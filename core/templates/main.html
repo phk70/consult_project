@@ -1,7 +1,5 @@
-{% extends "base.html" %} {% comment %} 1. title - заголовок страницы 2. header
-- шапка сайта 3. content - основное содержимое 4. footer - подвал сайта {%
-endcomment %} {% comment %} Вставляем в header навигационное меню с якорными
-ссылками {% endcomment %} {% block header %}
+{% extends "base.html" %}
+{% block header %}
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">BUBERSHOP</a>
@@ -37,9 +35,8 @@ endcomment %} {% comment %} Вставляем в header навигационн�
     </div>
   </div>
 </nav>
-
-{% endblock %} {% comment %} Делаем секции лендинга используя семантический тег
-section {% endcomment %} {% block content %}
+{% endblock header%}
+{% block main %}
 <section>
   <h2>О нас</h2>
   <p>
@@ -144,7 +141,6 @@ section {% endcomment %} {% block content %}
   </p>
 </section>
 <section>
-  <h2 id="orderForm">Запись на стрижку</h2>
-  {% comment %} Тут будет рендер Django формы {% endcomment %}
+  <h2 id="orderForm">Запись на стрижку</h2> 
 </section>
-{% endblock %}
+{% endblock main %}
