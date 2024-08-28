@@ -2,6 +2,8 @@ html {
   margin-left: 50px;
   margin-right: 80px;
   scroll-behavior: smooth;
+  min-height: 100%;
+  position: relative;
 }
 
 .master img {
@@ -13,7 +15,10 @@ html {
   text-align: center;
   width: 200px;
 }
-
-.masters {
-  display: inline-block;
+#masters img{
+  width: 200px;
+  border-radius: 50%;
 }
+
+
+
