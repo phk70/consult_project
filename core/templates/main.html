@@ -65,13 +65,30 @@
 </section>
 <section>
     <h2 id="masters">Наши мастера</h2>  
-    <div class="masters">
-    {% for master in masters %}
-        <div class="master">
-            <img src='{{ master.photo }}'> 
-            <p>{{ master.last_name }} {{ master.first_name }}</p>
-        </div>          
-    {% endfor %}
+    <div id="mastersCarouselIndicators" class="carousel slide mx-auto" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        {% for master in masters %}
+          <button type="button" data-bs-target="#mastersCarouselIndicators" data-bs-slide-to="{{ forloop.counter0 }}" class="{% if forloop.first %}active{% endif %}" aria-current="true" aria-label="Slide {{ forloop.counter }}"></button>
+        {% endfor %}
+      </div>
+      <div class="carousel-inner">
+        {% for master in masters %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <img src="{{ master.photo.url }}" class="d-block w-100" alt="{{ master.first_name }} {{ master.last_name }}">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>{{ master.first_name }} {{ master.last_name }}</h5>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#mastersCarouselIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#mastersCarouselIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>  
         
 </section>

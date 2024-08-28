@@ -1,32 +1,30 @@
 from django.contrib import admin
-from .models import Master, Service, Client
+from .models import Master, Service, Visit
 
-admin.site.register(Master)
-admin.site.register(Service)
-admin.site.register(Client)
-
-# @admin.register(Master)
-# class MasterAdmin(admin.ModelAdmin):
-#     list_display = ("first_name", "last_name", "contact_info")
-#     search_fields = ("first_name", "last_name")
-#     list_filter = ("services",)
+# admin.site.register(Master)
+# admin.site.register(Service)
+# admin.site.register(Visit)
 
 
-# @admin.register(Service)
-# class ServiceAdmin(admin.ModelAdmin):
-#     list_display = (
-#         "name",
-#         "price",
-#     )
-#     search_fields = ("name",)
-#     filter_horizontal = ("name",)
+@admin.register(Visit)
+class VisitAdmin(admin.ModelAdmin):
+    list_display = ("name", "phone", "created_at", "status")
+    list_filter = ("status", "created_at")
+    search_fields = ("name", "phone", "comment")
 
 
-# @admin.register(Service)
-# class ClientAdmin(admin.ModelAdmin):
-#     list_display = (
-#         "name",
-#         "phone",
-#     )
-#     search_fields = ("name",)
-#     filter_horizontal = ("name",)
+@admin.register(Master)
+class MasterAdmin(admin.ModelAdmin):
+    list_display = ("first_name", "last_name", "photo")
+    search_fields = ("first_name", "last_name")
+    list_filter = ("services",)
+
+
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+    list_display = (
+        "name",
+        "price",
+    )
+    search_fields = ("name", "services")
+    # filter_horizontal = ('masters',)
