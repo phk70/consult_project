@@ -37,34 +37,22 @@
 </nav>
 {% endblock header%}
 {% block main %}
-<section>
+<section class="col-12 mb-4">
   <h2>О нас</h2>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae repellat
-    quos perferendis quam omnis blanditiis dolor dignissimos unde? Eaque
-    laudantium eligendi dicta quas autem fugit consequatur cumque earum eveniet
-    ex! Officiis, eos! Minima perferendis maxime, explicabo hic amet dignissimos
-    cupiditate delectus aliquid dolorem sunt eveniet voluptates ut nam fugiat
-    reiciendis corporis. Omnis mollitia molestias suscipit porro facilis nihil
-    magnam quia esse ipsum itaque labore accusamus sint recusandae, expedita
-    cumque dolor earum natus eius totam adipisci sed voluptatum numquam quidem.
-    Nam id qui accusantium odit tenetur facere reprehenderit minus eius vel
-    natus non voluptatem commodi aliquid facilis iste exercitationem, provident
-    incidunt ex odio asperiores fuga aliquam quam. Eveniet odio hic magnam
-    doloremque maxime quis ratione ipsa saepe iure atque molestiae laudantium,
-    nisi, nemo facere quisquam sit. Voluptatem dolore tempora officiis excepturi
-    nesciunt sed, itaque impedit modi, qui sit corrupti molestiae consequuntur
-    voluptatum eveniet explicabo maiores doloribus quos tenetur quis? Vero
-    dolorum sequi itaque sint sunt, qui iure ducimus cumque officiis
-    consequuntur obcaecati, aliquam explicabo repudiandae facere! Quaerat ut
-    explicabo similique vitae minus vero commodi soluta veritatis sed at
-    praesentium quas dignissimos quasi eveniet aperiam cum aliquam mollitia,
-    quis placeat. Iusto facere assumenda nemo totam repellendus libero
-    quibusdam, at vitae culpa provident.
+    Добро пожаловать в наш барбершоп — пространство, где стиль и комфорт встречаются в гармонии. Мы предлагаем не просто стрижку, а целый опыт, который подарит вам уверенность и подчеркнет вашу индивидуальность.
+
+Наши мастера — настоящие профессионалы своего дела, которые следят за последними трендами и используют только качественные инструменты и средства. Каждая стрижка, борода или укладка — это произведение искусства, созданное с любовью и вниманием к деталям.
+
+В нашем барбершопе вы сможете расслабиться в уютной атмосфере, наслаждаясь ароматом свежезаваренного кофе и легким разговором. Мы создали пространство, где каждый клиент чувствует себя как дома: стильный интерьер, комфортные кресла и дружелюбный персонал.
+
+Мы понимаем, что каждый мужчина уникален, поэтому предлагаем индивидуальный подход к каждому клиенту. Наша цель — не просто сделать вас красивым, но и помочь вам найти свой уникальный стиль.
+
+Приходите в наш барбершоп и позвольте нам позаботиться о вашем внешнем виде. Мы уверены, что вы уйдете не только с идеальной стрижкой, но и с отличным настроением!
   </p>
 </section>
-<section>
-    <h2 id="masters">Наши мастера</h2>  
+<section id="masters" class="col-12 mb-4">
+    <h2>Наши мастера</h2>  
     <div id="mastersCarouselIndicators" class="carousel slide mx-auto" data-bs-ride="carousel">
       <div class="carousel-indicators">
         {% for master in masters %}
@@ -92,8 +80,8 @@
     </div>  
         
 </section>
-<section>
-  <h2 id="services">Услуги</h2>
+<section id="services" class="col-12 mb-4">
+  <h2>Услуги</h2>
   <p>
     Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique
     recusandae a tempora repellat pariatur est, libero quis eius doloremque
@@ -119,8 +107,8 @@
     deserunt in temporibus.
   </p>
 </section>
-<section>
-  <h2 id="reviews">Отзывы</h2>
+<section id="reviews" class="col-12 mb-4">
+  <h2>Отзывы</h2>
   <p>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum neque repellat soluta veniam esse quis, iste dolores fugit aliquid nisi sapiente sint excepturi reiciendis omnis eum aperiam assumenda voluptatibus magni error aliquam voluptatum animi ducimus ut. Laudantium, dolores! Deleniti molestias esse placeat quod provident velit, repellat minus nobis fugiat. Eos.</p>
     <p>Illo doloremque incidunt ipsam cum explicabo voluptates, maxime magni praesentium dolor magnam harum, cumque, corporis aliquam natus consequuntur aut fuga eligendi dolores autem! Cum voluptates numquam dolorum sapiente eveniet quis tempora. Quae, maiores sequi debitis modi tenetur possimus explicabo commodi laudantium unde sunt nisi odio repellendus voluptates ratione cum quos!</p>
@@ -144,7 +132,12 @@
     <p>Est praesentium et, quod cupiditate modi illo enim saepe quisquam distinctio sint, quos dolorem unde nisi asperiores ipsa quis aspernatur, esse iusto? Nisi nobis vero architecto magnam fugit repudiandae temporibus dolor rerum harum voluptatibus, voluptates enim assumenda, quae labore hic distinctio qui ad ab doloremque alias. Iusto, dolore! Delectus, illum?</p>
   </p>
 </section>
-<section>
-  <h2 id="orderForm">Запись на стрижку</h2> 
+<section id="orderForm" class="col-12 mb-4">
+  <h2>Запись на стрижку</h2> 
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="mb-3">{{ form.as_p }}</div>
+    <button type="submit" class="btn btn-primary">Отправить</button>
+  </form>
 </section>
 {% endblock main %}
