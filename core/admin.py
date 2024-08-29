@@ -26,5 +26,5 @@ class ServiceAdmin(admin.ModelAdmin):
         "name",
         "price",
     )
-    search_fields = ("name", "services")
+    search_fields = ("name",)
     # filter_horizontal = ('masters',)
