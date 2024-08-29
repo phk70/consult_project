@@ -7,7 +7,8 @@ from django.http import JsonResponse
 
 def main_page(request):
     masters = Master.objects.all()
-    
+    services = Service.objects.all()
+
     if request.method == "POST":
         form = VisitModelForm(request.POST)
         if form.is_valid():
@@ -15,7 +16,7 @@ def main_page(request):
             return redirect("thanks_you_page")
     else:
         form = VisitModelForm()
-    return render(request, "main.html", {"masters": masters, "form": form})
+    return render(request, "main.html", {"masters": masters, "form": form, "services": services})
 
 
 def thanks_you_page(request):

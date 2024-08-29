@@ -28,10 +28,47 @@
     </main>
     {% block footer %}
     <footer class="bg-dark text-white py-4">
-        <div class="container">        
-        <p>Сделано для домашнего использования. 2024 год</p>        
-        </div>    
-    </footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                <h5>Разделы страницы</h5>
+                <ul class="list-unstyled">                    
+                      <li class="nav-item">
+                        <a class="nav-link" href="#masters">Мастера</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#services">Услуги</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#reviews">Отзывы</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#orderForm">Запись на стрижку</a>
+                </ul>
+              </div>
+            <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+              <h5>Контакты</h5>
+              <ul class="list-unstyled">
+                <li>
+                  <i class="bi bi-telephone-fill"></i>
+                  <a
+                    class="text-white text-decoration-none"
+                    href="tel:+79131118223"
+                    >+7 (913) 111-82-23</a
+                  >
+                </li>
+                <li>г.Томск, ул. Тверская, д. 81</li>                
+              </ul>
+            </div>
+            <div class="col-lg-4 col-md-12">
+              <h5>Мы на карте</h5>
+              <div class="map-container">
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A501fdf851e60ef9deece5cdd06825abc792395c0cdfce1be8840fa894f9796c4&amp;width=360&amp;height=180&amp;lang=ru_RU&amp;scroll=true"></script>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
     {% endblock footer %}     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     </body>

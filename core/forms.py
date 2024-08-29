@@ -1,5 +1,5 @@
 from django import forms
-from .models import Visit, Master, Service
+from .models import Visit
 import re
 
 
@@ -9,7 +9,7 @@ class VisitModelForm(forms.ModelForm):
         fields = ["name", "phone", "comment", "master", "services"]
         widgets = {
             "name": forms.TextInput(
-                attrs={"placeholder": "Имя", "class": "form-control"}
+                attrs={"placeholder": "Ваше имя", "class": "form-control"}
             ),
             "phone": forms.TextInput(
                 attrs={
