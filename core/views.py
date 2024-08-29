@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from core.models import Master, Visit, Service
+from core.models import Master, Service
 from .forms import VisitModelForm
 from django.http import JsonResponse
 
