@@ -15,10 +15,8 @@ html {
   text-align: center;
   width: 200px;
 }
-#masters img{
-  width: 200px;
-  border-radius: 50%;
+
+.carousel {
+  max-width: 500px
+  justify-content: center;
 }
-
-
-
