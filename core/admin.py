@@ -8,8 +8,8 @@ from .models import Master, Service, Visit
 
 @admin.register(Visit)
 class VisitAdmin(admin.ModelAdmin):
-    list_display = ("name", "phone", "created_at", "status")
-    list_filter = ("status", "created_at")
+    list_display = ("name", "phone", "created_at", "status")  # Что будет отображаться в моделе
+    list_filter = ("status", "created_at")  # фильтр по полям
     search_fields = ("name", "phone", "comment")
 
 

@@ -6,5 +6,5 @@ class CoreConfig(AppConfig):
     name = 'core'
     verbose_name = 'Записи клиентов'
 
-    def ready(self):
+    def ready(self):  # По готовности приложения к отправке - импортируем библиотеку signal
         import core.signals

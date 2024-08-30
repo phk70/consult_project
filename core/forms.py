@@ -14,7 +14,7 @@ class VisitModelForm(forms.ModelForm):
             "phone": forms.TextInput(
                 attrs={
                     "type": "tel",
-                    "placeholder": "Номер телефона",
+                    "placeholder": "Номер телефона +7хххххххххх",
                     "class": "form-control",
                 }
             ),
