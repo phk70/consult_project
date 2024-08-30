@@ -22,9 +22,5 @@ class MasterAdmin(admin.ModelAdmin):
 
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
-    list_display = (
-        "name",
-        "price",
-    )
+    list_display = ("name", "price",)
     search_fields = ("name",)
-    # filter_horizontal = ('masters',)
