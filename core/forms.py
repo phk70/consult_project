@@ -7,6 +7,15 @@ class VisitForm(forms.Form):
     phone = forms.CharField(label='Телефон', max_length=20, widget=forms.TextInput(attrs={'type': 'tel', 'placeholder': 'Номер телефона', 'class': 'form-control'}))    
     comment = forms.CharField(label='Комментарий', required=False, widget=forms.Textarea(attrs={'placeholder': 'Комментарий', 'class': 'form-control'}))
 
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Если форма ввода содержит ошибки, то добавляем класс 'is-invalid' к определенным полям
+        for field_name, field in self.fields.items():
+            if self.errors.get(field_name):
+                field.widget.attrs.update({'class': field.widget.attrs['class'] + ' is-invalid'})
+
+
     def clean_phone(self):
         phone = self.cleaned_data.get('phone', '').strip()
 
