@@ -1,11 +1,12 @@
 {% extends "base.html" %} 
 {% block title %}Спасибо!{% endblock title %} 
-{% block main %}
+{% block content %}
+{% include 'menu.html' %}
 <div class="container mt-5">
   <h1>Спасибо за вашу заявку!</h1>
   <p>За вами уже выехали...</p>
   <a href="/" class="btn btn-primary mt-3">Вернуться на главную</a>
 </div>
-{% endblock main %}
+{% endblock content %}
 {% block footer %}{% endblock footer %}
 

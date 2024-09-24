@@ -1,10 +1,6 @@
 from django.contrib import admin
 from .models import Master, Service, Visit
 
-# admin.site.register(Master)
-# admin.site.register(Service)
-# admin.site.register(Visit)
-
 
 @admin.register(Visit)
 class VisitAdmin(admin.ModelAdmin):
@@ -23,5 +19,4 @@ class MasterAdmin(admin.ModelAdmin):
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ("name", "price",)
-    search_fields = ("name",)
-    # filter_horizontal = ('masters',)  # Для удобного выбора множества мастеров
+    search_fields = ("name",)   

@@ -2,7 +2,7 @@ import os
 import logging
 import telegram
 from dotenv import load_dotenv
-import asyncio
+# import asyncio  # Для теста
 
 
 # Логирование для отображения в терминале.
@@ -24,9 +24,9 @@ async def send_telegram_message(token, chat_id, message, parse_mode="Markdown"):
         raise
 
 # Тест отправки
-if __name__ == "__main__":
-    load_dotenv()
-    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-    YOUR_PERSONAL_CHAT_ID = os.getenv("YOUR_PERSONAL_CHAT_ID")
-    message = "*Тестовое сообщение*"
-    asyncio.run(send_telegram_message(TELEGRAM_BOT_TOKEN, YOUR_PERSONAL_CHAT_ID, message))
+# if __name__ == "__main__":
+#     load_dotenv()
+#     TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+#     YOUR_PERSONAL_CHAT_ID = os.getenv("YOUR_PERSONAL_CHAT_ID")
+#     message = "*Тестовое сообщение*"
+#     asyncio.run(send_telegram_message(TELEGRAM_BOT_TOKEN, YOUR_PERSONAL_CHAT_ID, message))
