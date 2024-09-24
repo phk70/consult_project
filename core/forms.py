@@ -1,11 +1,20 @@
 from django import forms
 import re
+from .models import Visit, Master, Service
 
-class VisitForm(forms.Form):
+class VisitModelForm(forms.ModelForm):
+# Используемая модель
+    model = Visit
 # Поля формы
-    name = forms.CharField(label='Имя', max_length=100, widget=forms.TextInput(attrs={'placeholder': 'Имя', 'class': 'form-control'}))
-    phone = forms.CharField(label='Телефон', max_length=20, widget=forms.TextInput(attrs={'type': 'tel', 'placeholder': 'Номер телефона', 'class': 'form-control'}))    
-    comment = forms.CharField(label='Комментарий', required=False, widget=forms.Textarea(attrs={'placeholder': 'Комментарий', 'class': 'form-control'}))
+    fields = ['name', 'phone', 'comment', 'master', 'services']
+# Виджеты для полей
+    widgets = {
+            'name': forms.TextInput(attrs={'placeholder': 'Имя', 'class': 'form-control'}),
+            'phone': forms.TextInput(attrs={'type': 'tel', 'placeholder': 'Номер телефона', 'class': 'form-control'}),
+            'comment': forms.Textarea(attrs={'placeholder': 'Комментарий', 'class': 'form-control'}),
+            'master': forms.Select(attrs={'class': 'form-control'}),
+            'services': forms.SelectMultiple(attrs={'class': 'form-control'}),    
+    }
 
 
     def __init__(self, *args, **kwargs):
@@ -13,7 +22,8 @@ class VisitForm(forms.Form):
         # Если форма ввода содержит ошибки, то добавляем класс 'is-invalid' к определенным полям
         for field_name, field in self.fields.items():
             if self.errors.get(field_name):
-                field.widget.attrs.update({'class': field.widget.attrs['class'] + ' is-invalid'})
+                widget_classes = field.widget.attrs.get('class', '')
+                field.widget.attrs['class'] = f'{widget_classes} is-invalid'
 
 
     def clean_phone(self):
@@ -26,3 +36,29 @@ class VisitForm(forms.Form):
             raise forms.ValidationError('Номер телефона должен начинаться с +7 или с 8 и содержать 10 цифр после кода страны.')
 
         return phone
+    
+
+    def clean(self):
+        cleaned_data = super().clean()
+        master = cleaned_data.get('master')
+        selected_services = cleaned_data.get('services')
+
+        if master and selected_services:
+            # Получаем множество услуг, которые предоставляет мастер
+            master_services = set(master.services.values_list('name', flat=True).distinct())
+
+            # Преобразуем услуги пользователя к множеству для сравнения
+            selected_services_set = set(service.name for service in selected_services)
+
+            # Приводим оба множества к нижнему регистру для страховки
+            master_services = {service.lower() for service in master_services}
+            selected_services_set = {service.lower() for service in selected_services_set}
+
+            # Проверяем, что мастер предоставляет все выбранные услуги
+            if not selected_services_set.issubset(master_services):
+                # Вычисляем разность множеств, чтобы найти неподдерживаемые услуги
+                unsupported_services = selected_services_set - master_services
+                unsupported_services_str = ', '.join(unsupported_services)
+                self.add_error('services', f"Мастер {master.first_name} {master.last_name} не предоставляет следующие услуги: {unsupported_services_str}.")
+
+        return cleaned_data
