@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 
 from .models import Master, Service
-from .forms import VisitModelForm
+from .forms import VisitForm
 from django.http import JsonResponse
 
 
@@ -9,14 +9,14 @@ def main_page(request):
     masters = Master.objects.all()  # Добываем всех мастеров и помещаем в переменную. ХЗ почему подчеркивается, все работает.
     
     if request.method == "POST":
-        form = VisitModelForm(request.POST)
+        form = VisitForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect("thanks_you_page")  # создаем объект Формы, проверяем на валидность. Если ок, то сохраняем и перенаправляем на "Спасибо". Если нет, то обратно на главную.
         if form.errors:
             return render(request, "main.html", {"form": form, 'masters': masters})
     else:
-        form = VisitModelForm()
+        form = VisitForm()
     
     return render(request, "main.html", {"masters": masters, "form": form})
 
